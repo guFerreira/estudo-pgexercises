@@ -6,7 +6,7 @@ SELECT name, membercost FROM cd.facilities;
 
 /* exercício 3 - Control which rows are retrieved */
 SELECT * FROM cd.facilities
-WHERE membercost >0;
+WHERE membercost > 0;
 
 /* exercício 4 - Control which rows are retrieved - part 2 */
 SELECT facid, name, membercost, monthlymaintenance
@@ -26,7 +26,7 @@ WHERE name LIKE '%Tennis%';
 
 /* exercício 6 - Matching against multiple possible values */
 SELECT * FROM cd.facilities
-WHERE facid IN (1,5);
+WHERE facid = 1 or facid = 1 ;
 
 /* utilizar IN quando tiver mais de uma consulta relacionado a um
 * determinado campo
@@ -57,6 +57,12 @@ WHERE joindate >= '2012-09-01';
 SELECT DISTINCT surname 
 FROM cd.members
 ORDER BY surname LIMIT 10;
+
+SELECT surname 
+FROM cd.members
+GROUP BY surname
+ORDER BY surname LIMIT 10;
+
 /* DISTINCT serve para remover os sobrenomes iguais
 * order by ordena em forma alfabetica os sobrenomes 
 * e o LIMIT limita a quantidade de valores na tabela de retorno
@@ -91,4 +97,6 @@ WHERE joindate = (SELECT max(joindate)
 /* Utilizo uma subquery que busca o último valor das datas
 * como parâmetro na clausula where da consulta principal
 */
+
+
 
