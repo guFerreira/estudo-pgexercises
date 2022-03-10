@@ -66,10 +66,20 @@ ORDER BY surname LIMIT 10;
 SELECT surname
 FROM cd.members
 UNION SELECT name
-	FROM cd.facilities
+	FROM cd.facilities;
 
 /* o UNION serve pra combinar duas consultas*/
 
 
 /* exercício 11 - Simple aggregation */
+SELECT max(joindate) as latest 
+FROM cd.members;
+
+/* uso o max(joindate) pra pegar a maior data 
+ * de entrada da tabela members e usa o "as" pra definir
+ * o nome da coluna que vai ser exibido
+ */
+
+
 /* exercício 12 - More aggregation */
+
