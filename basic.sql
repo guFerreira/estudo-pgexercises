@@ -12,10 +12,18 @@ WHERE membercost >0;
 SELECT facid, name, membercost, monthlymaintenance
 FROM cd.facilities
 WHERE membercost < monthlymaintenance/50 
-	and membercost > 0
+	and membercost > 0;
 
 
 /* exercício 5 - Basic string searches */
+SELECT * FROM cd.facilities
+WHERE name LIKE '%Tennis%';
+
+/* o LIKE serve pra verificar se é um string, e o que vai ser procurado
+* fica entre %palavra que eu procuro%
+*/
+
+
 /* exercício 6 - Matching against multiple possible values */
 /* exercício 7 - Classify results into buckets */
 /* exercício 8 - Working with dates */
