@@ -33,9 +33,20 @@ WHERE facid IN (1,5);
 */
 
 
-
-
 /* exercício 7 - Classify results into buckets */
+SELECT Name,
+	CASE WHEN (monthlymaintenance > 100)
+		THEN 'expensive'
+	ELSE
+		'cheap'
+	END AS cost
+FROM cd.facilities;
+/* colocar o CASE para fazer uma verificação entre o select e o from pra 
+* definir o determinado valor que vai ser inserido na tabela e 
+* o nome dessa tabela é definido pelo " AS cost"
+*/
+
+
 /* exercício 8 - Working with dates */
 /* exercício 9 - Removing duplicates, and ordering results */
 /* exercício 10 - Combining results from multiple queries */
