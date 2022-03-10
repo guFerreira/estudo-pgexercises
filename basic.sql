@@ -48,6 +48,11 @@ FROM cd.facilities;
 
 
 /* exercício 8 - Working with dates */
+SELECT memid, surname, firstname, joindate
+FROM cd.members
+WHERE joindate >= '2012-09-01';
+/* data no formato do timestamp xxxx-xx-xx xx:xx:xx */
+
 /* exercício 9 - Removing duplicates, and ordering results */
 /* exercício 10 - Combining results from multiple queries */
 /* exercício 11 - Simple aggregation */
