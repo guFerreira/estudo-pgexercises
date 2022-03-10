@@ -83,3 +83,12 @@ FROM cd.members;
 
 /* exercício 12 - More aggregation */
 
+SELECT firstname, surname, joindate
+FROM cd.members
+WHERE joindate = (SELECT max(joindate)
+				 	FROM cd.members);
+
+/* Utilizo uma subquery que busca o último valor das datas
+* como parâmetro na clausula where da consulta principal
+*/
+
