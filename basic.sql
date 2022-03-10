@@ -25,6 +25,16 @@ WHERE name LIKE '%Tennis%';
 
 
 /* exercício 6 - Matching against multiple possible values */
+SELECT * FROM cd.facilities
+WHERE facid IN (1,5);
+
+/* utilizar IN quando tiver mais de uma consulta relacionado a um
+* determinado campo
+*/
+
+
+
+
 /* exercício 7 - Classify results into buckets */
 /* exercício 8 - Working with dates */
 /* exercício 9 - Removing duplicates, and ordering results */
