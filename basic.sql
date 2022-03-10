@@ -63,5 +63,13 @@ ORDER BY surname LIMIT 10;
 */
 
 /* exercício 10 - Combining results from multiple queries */
+SELECT surname
+FROM cd.members
+UNION SELECT name
+	FROM cd.facilities
+
+/* o UNION serve pra combinar duas consultas*/
+
+
 /* exercício 11 - Simple aggregation */
 /* exercício 12 - More aggregation */
