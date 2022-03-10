@@ -54,6 +54,14 @@ WHERE joindate >= '2012-09-01';
 /* data no formato do timestamp xxxx-xx-xx xx:xx:xx */
 
 /* exercício 9 - Removing duplicates, and ordering results */
+SELECT DISTINCT surname 
+FROM cd.members
+ORDER BY surname LIMIT 10;
+/* DISTINCT serve para remover os sobrenomes iguais
+* order by ordena em forma alfabetica os sobrenomes 
+* e o LIMIT limita a quantidade de valores na tabela de retorno
+*/
+
 /* exercício 10 - Combining results from multiple queries */
 /* exercício 11 - Simple aggregation */
 /* exercício 12 - More aggregation */
