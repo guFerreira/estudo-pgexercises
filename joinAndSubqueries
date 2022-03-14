@@ -15,11 +15,22 @@ INNER JOIN cd.facilities
 		WHERE cd.facilities.name LIKE ('Tennis Court%') /* facilities q começam com o nome quadra de tenis*/
 			AND bookings.starttime >= '2012-09-21'/* intervalo de tempo entre o dia 21 e 22*/
 			AND bookings.starttime < '2012-09-22' 
-			ORDER BY bookings.starttime /* ordenado da menor data até a maior*/
+			ORDER BY bookings.starttime; /* ordenado da menor data até a maior*/
 
 /* Exercicio 3 - Produce a list of all members who have recommended another member*/ 
+SELECT DISTINCT rc.firstname, rc.surname
+FROM cd.members as mb
+	INNER JOIN cd.members as rc
+		ON rc.memid = mb.recommendedby
+ORDER BY rc.surname, rc.firstname; /*ordena primeiro pelo sobrenome e depois o nome*/
+
 /* Exercicio 4 - Produce a list of all members, along with their recommender*/ 
+
 /* Exercicio 5 - Produce a list of all members who have used a tennis court*/ 
+
 /* Exercicio 6 - Produce a list of costly bookings*/ 
+
+
 /* Exercicio 7 - Produce a list of all members, along with their recommender, using no joins.*/ 
+
 /* Exercicio 8 - Produce a list of costly bookings, using a subquery*/
