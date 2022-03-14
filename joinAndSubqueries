@@ -1,0 +1,16 @@
+
+/* Exercicio 1 - Retrieve the start times of members' bookings*/ 
+SELECT cd.bookings.starttime FROM cd.bookings
+	INNER JOIN cd.members
+		ON cd.bookings.memid = cd.members.memid
+		WHERE cd.members.firstname = 'David' 
+		AND cd.members.surname = 'Farrell';
+		
+		
+/* Exercicio 2 - Work out the start times of bookings for tennis courts*/ 
+/* Exercicio 3 - Produce a list of all members who have recommended another member*/ 
+/* Exercicio 4 - Produce a list of all members, along with their recommender*/ 
+/* Exercicio 5 - Produce a list of all members who have used a tennis court*/ 
+/* Exercicio 6 - Produce a list of costly bookings*/ 
+/* Exercicio 7 - Produce a list of all members, along with their recommender, using no joins.*/ 
+/* Exercicio 8 - Produce a list of costly bookings, using a subquery*/
