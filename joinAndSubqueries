@@ -25,6 +25,12 @@ FROM cd.members as mb
 ORDER BY rc.surname, rc.firstname; /*ordena primeiro pelo sobrenome e depois o nome*/
 
 /* Exercicio 4 - Produce a list of all members, along with their recommender*/ 
+SELECT mb.firstname as memfname, mb.surname as memsname,
+	rc.firstname as recfname, rc.surname as recsname
+FROM cd.members as mb
+LEFT OUTER JOIN cd.members as rc /* LEFT OUTER Deixa vazio se não haver um membro na tabela da direita*/
+	ON mb.recommendedby = rc.memid
+ORDER BY mb.surname, mb.firstname;
 
 /* Exercicio 5 - Produce a list of all members who have used a tennis court*/ 
 
