@@ -44,7 +44,29 @@ FROM cd.members as mb
 ORDER BY member, facility;
 
 /* Exercicio 6 - Produce a list of costly bookings*/ 
-
+/* faz a junção do nome e sobrenome em uma coluna member*/
+SELECT mb.firstname || ' ' || mb.surname as member,
+		fc.name as facility, 
+		/* operador condicional para verificar se é convidado ou membro*/
+		CASE
+			WHEN mb.memid = 0
+				THEN 
+					bk.slots*fc.guestcost
+				ELSE
+					bk.slots*fc.membercost
+			END as cost /* retorna em uma coluna chamada cost*/
+FROM cd.members mb
+	INNER JOIN cd.bookings bk ON mb.memid = bk.memid
+	INNER JOIN cd.facilities fc ON fc.facid = bk.facid
+/* pega os bookings do dia 2012-09-14 00:00:00 até 2012-09-15 00:00:00*/
+WHERE bk.starttime >='2012-09-14' 
+		and bk.starttime < '2012-09-15'
+		/* pega somente os que possuem um custo maior que 30, para os
+		membros e os convidados
+		*/
+		and (mb.memid = 0 and bk.slots*fc.guestcost > 30 or
+			mb.memid > 0 and bk.slots*fc.membercost > 30)
+ORDER BY cost DESC;
 
 /* Exercicio 7 - Produce a list of all members, along with their recommender, using no joins.*/ 
 
