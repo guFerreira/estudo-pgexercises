@@ -8,6 +8,15 @@ SELECT cd.bookings.starttime FROM cd.bookings
 		
 		
 /* Exercicio 2 - Work out the start times of bookings for tennis courts*/ 
+SELECT cd.bookings.starttime as start, cd.facilities.name
+FROM  cd.bookings
+INNER JOIN cd.facilities
+	ON cd.bookings.facid = cd.facilities.facid
+		WHERE cd.facilities.name LIKE ('Tennis Court%') /* facilities q começam com o nome quadra de tenis*/
+			AND bookings.starttime >= '2012-09-21'/* intervalo de tempo entre o dia 21 e 22*/
+			AND bookings.starttime < '2012-09-22' 
+			ORDER BY bookings.starttime /* ordenado da menor data até a maior*/
+
 /* Exercicio 3 - Produce a list of all members who have recommended another member*/ 
 /* Exercicio 4 - Produce a list of all members, along with their recommender*/ 
 /* Exercicio 5 - Produce a list of all members who have used a tennis court*/ 
