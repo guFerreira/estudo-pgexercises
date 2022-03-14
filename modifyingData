@@ -50,5 +50,6 @@ DELETE FROM cd.bookings;
 DELETE FROM cd.members WHERE memid = 37;
 
 /* Exercicio 9 - Delete based on a subquery*/ 
-
-
+DELETE FROM cd.members
+/* subquerie pra pegar uma coluna de memid, e se não existir ele remove*/
+WHERE memid NOT in (SELECT memid FROM cd.bookings)
