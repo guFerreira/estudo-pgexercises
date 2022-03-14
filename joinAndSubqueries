@@ -33,6 +33,15 @@ LEFT OUTER JOIN cd.members as rc /* LEFT OUTER Deixa vazio se não haver um memb
 ORDER BY mb.surname, mb.firstname;
 
 /* Exercicio 5 - Produce a list of all members who have used a tennis court*/ 
+/* || ' ' || concatena as colunas em uma só, com o nome definido pelo "as member"*/
+SELECT DISTINCT mb.firstname || ' ' || mb.surname as member, fc.name as facility
+FROM cd.members as mb
+	INNER JOIN cd.bookings as bk
+		ON bk.memid = mb.memid
+	INNER JOIN cd.facilities as fc
+		ON bk.facid = fc.facid
+		WHERE fc.name LIKE 'Tennis Court%'
+ORDER BY member, facility;
 
 /* Exercicio 6 - Produce a list of costly bookings*/ 
 
