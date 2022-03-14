@@ -34,7 +34,14 @@ UPDATE cd.facilities
 	
 	
 /* Exercicio 6 - Update a row based on the contents of another row*/ 
-
+UPDATE cd.facilities fc
+	SET
+	/* busca pela primeira quadra e retorna o custo * 1.1 que é 10% a mais */
+		membercost = (SELECT membercost * 1.1 FROM cd.facilities
+					 WHERE facid = 0),
+		guestcost =  (SELECT guestcost * 1.1 FROM cd.facilities
+					 WHERE facid = 0)
+	WHERE fc.facid = 1 
 /* Exercicio 7 - Delete all bookings*/ 
 
 /* Exercicio 8 - Delete a member from the cd.members table*/ 
