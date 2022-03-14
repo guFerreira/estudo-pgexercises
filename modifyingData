@@ -47,6 +47,8 @@ DELETE FROM cd.bookings;
 /*TRUNCATE cd.bookings faz a msm coisa*/
 
 /* Exercicio 8 - Delete a member from the cd.members table*/ 
-
+DELETE FROM cd.members WHERE memid = 37;
 
 /* Exercicio 9 - Delete based on a subquery*/ 
+
+
