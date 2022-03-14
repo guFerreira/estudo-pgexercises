@@ -16,13 +16,13 @@ INSERT INTO cd.facilities(facid, name, membercost, guestcost,
 		SELECT
 		/* subquerie de dentro pra buscar o maior id de facilities*/
 		(SELECT max(facid) FROM cd.facilities)+1,
-		'Spa', 20, 30, 100000, 800
+		'Spa', 20, 30, 100000, 800;
 
 /* Exercicio 4 - Update some existing data*/ 
 /* Muito importante ter o where, se não é substituido em todas as linhas*/
 UPDATE cd.facilities
 	SET initialoutlay = 10000
-WHERE cd.facilities.facid = 1
+WHERE cd.facilities.facid = 1;
 	
 	
 /* Exercicio 5 - Update multiple rows and columns at the same time*/ 
@@ -41,9 +41,12 @@ UPDATE cd.facilities fc
 					 WHERE facid = 0),
 		guestcost =  (SELECT guestcost * 1.1 FROM cd.facilities
 					 WHERE facid = 0)
-	WHERE fc.facid = 1 
+	WHERE fc.facid = 1 ;
 /* Exercicio 7 - Delete all bookings*/ 
+DELETE FROM cd.bookings;
+/*TRUNCATE cd.bookings faz a msm coisa*/
 
 /* Exercicio 8 - Delete a member from the cd.members table*/ 
+
 
 /* Exercicio 9 - Delete based on a subquery*/ 
