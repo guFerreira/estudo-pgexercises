@@ -19,7 +19,11 @@ INSERT INTO cd.facilities(facid, name, membercost, guestcost,
 		'Spa', 20, 30, 100000, 800
 
 /* Exercicio 4 - Update some existing data*/ 
-
+/* Muito importante ter o where, se não é substituido em todas as linhas*/
+UPDATE cd.facilities
+	SET initialoutlay = 10000
+	WHERE cd.facilities.facid = 1
+	
 	
 /* Exercicio 5 - Update multiple rows and columns at the same time*/ 
 
