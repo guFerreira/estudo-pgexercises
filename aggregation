@@ -2,7 +2,9 @@
 SELECT count(fc.facid) 
 FROM cd.facilities as fc
 /* Exercicio 2 - Count the number of expensive facilities*/
-
+SELECT count(*) 
+FROM cd.facilities
+WHERE cd.facilities.guestcost >= 10
 /* Exercicio 3 - Count the number of recommendations each member makes.*/ 
 
 /* Exercicio 4 - List the total slots booked per facility*/ 
