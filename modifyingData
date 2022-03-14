@@ -8,3 +8,25 @@ INSERT INTO cd.facilities(
 	facid, name, membercost, guestcost, initialoutlay, monthlymaintenance)
 	VALUES (9, 'Spa', 20, 30, 100000, 800),
 			(10, 'Squash Court 2', 3.5, 17.5, 5000, 80);
+
+/* Exercicio 3 - Insert calculated data into a table*/ 
+INSERT INTO cd.facilities(facid, name, membercost, guestcost,
+						  initialoutlay, monthlymaintenance)
+		/* busca o id máximo e soma +1 */
+		SELECT
+		/* subquerie de dentro pra buscar o maior id de facilities*/
+		(SELECT max(facid) FROM cd.facilities)+1,
+		'Spa', 20, 30, 100000, 800
+
+/* Exercicio 4 - Update some existing data*/ 
+
+	
+/* Exercicio 5 - Update multiple rows and columns at the same time*/ 
+
+/* Exercicio 6 - Update a row based on the contents of another row*/ 
+
+/* Exercicio 7 - Delete all bookings*/ 
+
+/* Exercicio 8 - Delete a member from the cd.members table*/ 
+
+/* Exercicio 9 - Delete based on a subquery*/ 
