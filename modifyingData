@@ -22,11 +22,17 @@ INSERT INTO cd.facilities(facid, name, membercost, guestcost,
 /* Muito importante ter o where, se não é substituido em todas as linhas*/
 UPDATE cd.facilities
 	SET initialoutlay = 10000
-	WHERE cd.facilities.facid = 1
+WHERE cd.facilities.facid = 1
 	
 	
 /* Exercicio 5 - Update multiple rows and columns at the same time*/ 
-
+/* atualiza pelo id 0 e 1*/
+UPDATE cd.facilities
+	SET membercost = 6,
+		guestcost = 30
+	WHERE facid in (0,1);
+	
+	
 /* Exercicio 6 - Update a row based on the contents of another row*/ 
 
 /* Exercicio 7 - Delete all bookings*/ 
