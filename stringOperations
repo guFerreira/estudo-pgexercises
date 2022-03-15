@@ -14,6 +14,18 @@ SELECT mb.memid, mb.telephone
 	FROM cd.members as mb
 	WHERE mb.telephone ~ '[()]' /* usar expreção regular com o operador ~ */
 /* Exercicio 5 - Pad zip codes with leading zeroes*/ 
+select lpad(cast(zipcode as char(5)),5,'0') zip 
+from cd.members 
+order by zip          
+
+/*lpad(cast(zipcode as char(5)),5,'0')
+cast para mudar de integer pra char
+
+primeiro parâmetro é a string atual -> cast(zipcode as char(5)), 
+5 -> a quantidade dos caracteres que vão ser preenchidos
+'0' -> caractere que vai ser utilizado para preencher
+
+*/
 
 
 /* Exercicio 6 - Count the number of members whose surname starts with each letter of the alphabet*/ 
