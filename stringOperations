@@ -10,7 +10,12 @@ WHEERE upper(name) like 'TENNIS%';/* Transforma o nome em maiusculo e faz a comp
 /*também funciona nesse caso -> WHERE fc.name LIKE 'Tennis%';*/
 
 /* Exercicio 4 - Find telephone numbers with parentheses*/ 
+SELECT mb.memid, mb.telephone
+	FROM cd.members as mb
+	WHERE mb.telephone ~ '[()]' /* usar expreção regular com o operador ~ */
 /* Exercicio 5 - Pad zip codes with leading zeroes*/ 
+
+
 /* Exercicio 6 - Count the number of members whose surname starts with each letter of the alphabet*/ 
 /* Exercicio 7 - Clean up telephone numbers*/ 
 
