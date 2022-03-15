@@ -1,0 +1,36 @@
+/* Exercicio 1 - Produce a timestamp for 1 a.m. on the 31st of August 2012*/ 
+select timestamp '2012-08-31 01:00:00';          
+
+/* Exercicio 2 - Subtract timestamps from each other*/ 
+SELECT   timestamp '2012-08-31 01:00:00' - timestamp '2012-07-30 01:00:00' as interval;
+/* Exercicio 3 - Generate a list of all the dates in October 2012*/ 
+/*generate series(datainicial, data final, intervalo entre as datas)*/
+SELECT generate_series(timestamp '2012-10-01',
+					   timestamp '2012-10-31',
+					   interval '1 day') as ts;
+
+
+/* Exercicio 4 - Get the day of the month from a timestamp*/
+SELECT EXTRACT(day FROM timestamp '2012-08-31' )
+/*extract extrai um valor específico do timestamp, year,month, day..*/
+
+/* Exercicio 5 - Work out the number of seconds between timestamps*/ 
+/*epoch retorna a epoca a partir de 19*/
+SELECT EXTRACT(epoch FROM (timestamp '2012-09-02 00:00:00' - '2012-08-31 01:00:00'));  
+
+/* Exercicio 6 - Work out the number of days in each month of 2012*/ 
+SELECT EXTRACT(month FROM cal.month) as month,/* extrai o número dos meses do ano*/
+		(cal.month + interval '1 month') - cal.month as lenght
+		FROM (
+		  SELECT generate_series(timestamp '2012-01-01',
+								 timestamp '2012-12-31',
+								interval '1 month') as month) cal
+ORDER BY month;
+
+/* Exercicio 7 - Work out the number of days remaining in the month*/ 
+/* Exercicio 8 - Work out the end time of bookings*/ 
+/* Exercicio 9 - Return a count of bookings for each month*/ 
+/* Exercicio 10 - Work out the utilisation percentage for each facility by month*/ 
+
+
+
