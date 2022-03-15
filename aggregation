@@ -51,7 +51,13 @@ SELECT count(*)
 	FROM (SELECT DISTINCT mb.memid FROM cd.bookings) as mb
 */
 
-/* Exercicio 8 - List facilities with more than 1000 slots booked*/ 
+/* Exercicio 8 - List facilities with more than 1000 slots booked*/
+
+SELECT bk.facid, sum(bk.slots) as "Total Slots"
+	FROM cd.bookings as bk
+	GROUP BY bk.facid
+	HAVING sum(bk.slots) > 1000 /*filtra por função agregada*/
+ORDER BY bk.facid
 /* Exercicio 9 - Find the total revenue of each facility*/ 
 /* Exercicio 10 - Find facilities with a total revenue less than 1000*/ 
 /* Exercicio 11 - Output the facility id that has the highest number of slots booked*/ 
