@@ -1,0 +1,85 @@
+/* Exercicio 1 - Count the number of facilities*/ 
+SELECT count(fc.facid) 
+FROM cd.facilities as fc;
+
+/* Exercicio 2 - Count the number of expensive facilities*/
+SELECT count(*) 
+FROM cd.facilities
+WHERE cd.facilities.guestcost >= 10;
+
+/* Exercicio 3 - Count the number of recommendations each member makes.*/ 
+SELECT mb.recommendedby, count(*)
+	FROM cd.members as mb
+	WHERE mb.recommendedby is not null
+	GROUP BY recommendedby /*agrupa pelo recommendedby*/
+ORDER BY recommendedby; /*ordena pelo numero do id*/
+
+/* Exercicio 4 - List the total slots booked per facility*/ 
+SELECT fc.facid, sum(bk.slots) as "Total Slots"
+	FROM cd.facilities as fc
+	INNER JOIN cd.bookings as bk
+		ON bk.facid = fc.facid
+	GROUP BY fc.facid
+ORDER BY fc.facid;
+
+/* Exercicio 5 - List the total slots booked per facility in a given month*/ 
+SELECT fc.facid, SUM(bk.slots) as "Total Slots"
+	FROM cd.facilities as fc
+	INNER JOIN cd.bookings as bk
+		ON bk.facid = fc.facid
+	WHERE bk.starttime BETWEEN '2012-09-01' and '2012-10-01'
+	GROUP BY fc.facid
+ORDER BY "Total Slots";
+
+/* Exercicio 6 - List the total slots booked per facility per month*/ 
+SELECT fc.facid, extract(month FROM starttime) as month,
+	sum(bk.slots) as "Total Slots"
+	FROM cd.bookings as bk
+	INNER JOIN cd.facilities as fc
+		ON fc.facid = bk.facid
+	WHERE extract(year FROM bk.starttime) = 2012
+	/* WHERE bk.starttime BETWEEN '2012-01-01' AND '2012-12-31'  também funciona com between*/
+	GROUP BY fc.facid, month
+ORDER BY fc.facid, month
+
+/* Exercicio 7 - Find the count of members who have made at least one booking*/ 
+SELECT count(DISTINCT bk.memid)
+	FROM cd.bookings as bk
+	
+/*
+SELECT count(*) 
+	FROM (SELECT DISTINCT mb.memid FROM cd.bookings) as mb
+*/
+
+/* Exercicio 8 - List facilities with more than 1000 slots booked*/
+
+SELECT bk.facid, sum(bk.slots) as "Total Slots"
+	FROM cd.bookings as bk
+	GROUP BY bk.facid
+	HAVING sum(bk.slots) > 1000 /*filtra por função agregada*/
+ORDER BY bk.facid
+/* Exercicio 9 - Find the total revenue of each facility*/ 
+SELECT fc.name, sum(bk.slots * 
+				   CASE 
+				   		WHEN bk.memid = 0 THEN fc.guestcost
+				   		ELSE fc.membercost
+				   END) as revenue
+	FROM cd.bookings as bk
+	INNER JOIN cd.facilities fc
+		ON bk.facid = fc.facid
+	GROUP BY fc.name
+ORDER BY revenue;
+
+/* Exercicio 10 - Find facilities with a total revenue less than 1000*/ 
+/* Exercicio 11 - Output the facility id that has the highest number of slots booked*/ 
+/* Exercicio 12 - List the total slots booked per facility per month, part 2*/ 
+/* Exercicio 13 - List the total hours booked per named facility*/ 
+/* Exercicio 14 - List each member's first booking after September 1st 2012*/ 
+/* Exercicio 15 - Produce a list of member names, with each row containing the total member count*/ 
+/* Exercicio 16 - Produce a numbered list of members*/ 
+/* Exercicio 17 - Output the facility id that has the highest number of slots booked, again*/ 
+/* Exercicio 18 - Rank members by (rounded) hours used*/ 
+/* Exercicio 19 - Find the top three revenue generating facilities*/ 
+/* Exercicio 20 - Classify facilities by value*/ 
+/* Exercicio 21 - Calculate the payback time for each facility*/ 
+/* Exercicio 22 - Calculate a rolling average of total revenue*/ 

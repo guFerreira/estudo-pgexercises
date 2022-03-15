@@ -12,10 +12,10 @@ SELECT cd.bookings.starttime as start, cd.facilities.name
 FROM  cd.bookings
 INNER JOIN cd.facilities
 	ON cd.bookings.facid = cd.facilities.facid
-		WHERE cd.facilities.name LIKE ('Tennis Court%') /* facilities q começam com o nome quadra de tenis*/
-			AND bookings.starttime >= '2012-09-21'/* intervalo de tempo entre o dia 21 e 22*/
-			AND bookings.starttime < '2012-09-22' 
-			ORDER BY bookings.starttime; /* ordenado da menor data até a maior*/
+WHERE cd.facilities.name LIKE ('Tennis Court%') /* facilities q começam com o nome quadra de tenis*/
+	AND bookings.starttime >= '2012-09-21'/* intervalo de tempo entre o dia 21 e 22*/
+	AND bookings.starttime < '2012-09-22' 
+ORDER BY bookings.starttime; /* ordenado da menor data até a maior*/
 
 /* Exercicio 3 - Produce a list of all members who have recommended another member*/ 
 SELECT DISTINCT rc.firstname, rc.surname
@@ -77,7 +77,7 @@ SELECT DISTINCT mb.firstname || ' ' || mb.surname as member,
 		FROM cd.members as rc 
 			WHERE rc.memid = mb.recommendedby)
 FROM cd.members as mb
-ORDER BY member
+ORDER BY member;
 
 /* Exercicio 8 - Produce a list of costly bookings, using a subquery*/
 /* obtem os dados de member,facility e cost diretamente da subquery 
