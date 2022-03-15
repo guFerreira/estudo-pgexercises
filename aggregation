@@ -6,6 +6,11 @@ SELECT count(*)
 FROM cd.facilities
 WHERE cd.facilities.guestcost >= 10
 /* Exercicio 3 - Count the number of recommendations each member makes.*/ 
+SELECT mb.recommendedby, count(*)
+	FROM cd.members as mb
+	WHERE mb.recommendedby is not null
+	group by recommendedby /*agrupa pelo recommendedby*/
+order by recommendedby; /*ordena pelo numero do id*/
 
 /* Exercicio 4 - List the total slots booked per facility*/ 
 /* Exercicio 5 - List the total slots booked per facility in a given month*/ 
