@@ -2,6 +2,8 @@
 SELECT mb.surname ||', '|| mb.firstname
 	FROM cd.members as mb
 /* Exercicio 2 - Find facilities by a name prefix*/ 
+SELECT * FROM cd.facilities as fc
+WHERE fc.name LIKE 'Tennis%'
 /* Exercicio 3 - Perform a case-insensitive search*/ 
 /* Exercicio 4 - Find telephone numbers with parentheses*/ 
 /* Exercicio 5 - Pad zip codes with leading zeroes*/ 
