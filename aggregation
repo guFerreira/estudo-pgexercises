@@ -59,6 +59,17 @@ SELECT bk.facid, sum(bk.slots) as "Total Slots"
 	HAVING sum(bk.slots) > 1000 /*filtra por função agregada*/
 ORDER BY bk.facid
 /* Exercicio 9 - Find the total revenue of each facility*/ 
+SELECT fc.name, sum(bk.slots * 
+				   CASE 
+				   		WHEN bk.memid = 0 THEN fc.guestcost
+				   		ELSE fc.membercost
+				   END) as revenue
+	FROM cd.bookings as bk
+	INNER JOIN cd.facilities fc
+		ON bk.facid = fc.facid
+	GROUP BY fc.name
+ORDER BY revenue;
+
 /* Exercicio 10 - Find facilities with a total revenue less than 1000*/ 
 /* Exercicio 11 - Output the facility id that has the highest number of slots booked*/ 
 /* Exercicio 12 - List the total slots booked per facility per month, part 2*/ 
