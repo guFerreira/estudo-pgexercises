@@ -43,7 +43,13 @@ SELECT fc.facid, extract(month FROM starttime) as month,
 ORDER BY fc.facid, month
 
 /* Exercicio 7 - Find the count of members who have made at least one booking*/ 
-
+SELECT count(DISTINCT bk.memid)
+	FROM cd.bookings as bk
+	
+/*
+SELECT count(*) 
+	FROM (SELECT DISTINCT mb.memid FROM cd.bookings) as mb
+*/
 
 /* Exercicio 8 - List facilities with more than 1000 slots booked*/ 
 /* Exercicio 9 - Find the total revenue of each facility*/ 
