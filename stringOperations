@@ -1,10 +1,14 @@
 /* Exercicio 1 - Format the names of members*/ 
 SELECT mb.surname ||', '|| mb.firstname
-	FROM cd.members as mb
+	FROM cd.members as mb;
 /* Exercicio 2 - Find facilities by a name prefix*/ 
 SELECT * FROM cd.facilities as fc
-WHERE fc.name LIKE 'Tennis%'
+WHERE fc.name LIKE 'Tennis%';
 /* Exercicio 3 - Perform a case-insensitive search*/ 
+SELECT * FROM cd.facilities as fc
+WHEERE upper(name) like 'TENNIS%';/* Transforma o nome em maiusculo e faz a comparação*/
+/*também funciona nesse caso -> WHERE fc.name LIKE 'Tennis%';*/
+
 /* Exercicio 4 - Find telephone numbers with parentheses*/ 
 /* Exercicio 5 - Pad zip codes with leading zeroes*/ 
 /* Exercicio 6 - Count the number of members whose surname starts with each letter of the alphabet*/ 
