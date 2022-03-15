@@ -1,0 +1,15 @@
+/* Exercicio 1 - Produce a timestamp for 1 a.m. on the 31st of August 2012*/ 
+select timestamp '2012-08-31 01:00:00';          
+
+/* Exercicio 2 - Subtract timestamps from each other*/ 
+/* Exercicio 3 - Generate a list of all the dates in October 2012*/ 
+/* Exercicio 4 - Get the day of the month from a timestamp*/ 
+/* Exercicio 5 - Work out the number of seconds between timestamps*/ 
+/* Exercicio 6 - Work out the number of days in each month of 2012*/ 
+/* Exercicio 7 - Work out the number of days remaining in the month*/ 
+/* Exercicio 8 - Work out the end time of bookings*/ 
+/* Exercicio 9 - Return a count of bookings for each month*/ 
+/* Exercicio 10 - Work out the utilisation percentage for each facility by month*/ 
+
+
+
