@@ -71,8 +71,28 @@ SELECT fc.name, sum(bk.slots *
 ORDER BY revenue;
 
 /* Exercicio 10 - Find facilities with a total revenue less than 1000*/ 
+SELECT name, revenue FROM (
+  SELECT fc.name, sum (CASE WHEN memid = 0
+					  THEN slots * fc.guestcost
+  						ELSE slots * membercost
+  						END) as revenue /* subquerie pra achar revenue*/
+	FROM cd.bookings bk
+	INNER JOIN cd.facilities fc
+		on bk.facid = fc.facid
+	GROUP BY fc.name) as agregado WHERE revenue < 1000
+ORDER BY revenue
+
 /* Exercicio 11 - Output the facility id that has the highest number of slots booked*/ 
+SELECT fc.facid, sum(bk.slots)as "Total Slots"
+	FROM cd.facilities as fc
+	INNER JOIN cd.bookings as bk
+		ON bk.facid = fc.facid
+	GROUP BY fc.facid
+ORDER BY "Total Slots" DESC limit 1; /* limita a 1 linha o resultado da consulta*/
+
 /* Exercicio 12 - List the total slots booked per facility per month, part 2*/ 
+
+
 /* Exercicio 13 - List the total hours booked per named facility*/ 
 /* Exercicio 14 - List each member's first booking after September 1st 2012*/ 
 /* Exercicio 15 - Produce a list of member names, with each row containing the total member count*/ 
