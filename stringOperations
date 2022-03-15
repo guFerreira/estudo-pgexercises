@@ -37,7 +37,13 @@ ORDER BY letter;
 
 /* Exercicio 7 - Clean up telephone numbers*/ 
 
+select mb.memid, TRANSLATE(mb.telephone,'-( )', '')
+	FROM cd.members as mb
+ORDER BY mb.memid
 
+/*TRANSLATE substitui determinado char por outro em uma string, segundo parametro é os 
+chars que devem ser trocados
+o terceiro parametro é o char que vai substituir*/
 
 
 
