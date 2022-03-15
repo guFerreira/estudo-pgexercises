@@ -11,7 +11,8 @@ SELECT generate_series(timestamp '2012-10-01',
 
 
 /* Exercicio 4 - Get the day of the month from a timestamp*/
-
+SELECT EXTRACT(day FROM timestamp '2012-08-31' )
+/*extract extrai um valor específico do timestamp, year,month, day..*/
 
 /* Exercicio 5 - Work out the number of seconds between timestamps*/ 
 /* Exercicio 6 - Work out the number of days in each month of 2012*/ 
