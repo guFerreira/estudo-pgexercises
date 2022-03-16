@@ -94,10 +94,41 @@ ORDER BY "Total Slots" DESC limit 1; /* limita a 1 linha o resultado da consulta
 
 
 /* Exercicio 13 - List the total hours booked per named facility*/ 
+select facs.facid, facs.name,
+	trim(to_char(sum(bks.slots)/2.0, '9999999999999999D99')) as "Total Hours"
+	/*to_char vai transformar o resultado da soma dos slots em uma string com o formato de numeros*/
+	from cd.bookings bks
+	inner join cd.facilities facs
+		on facs.facid = bks.facid
+	group by facs.facid, facs.name
+order by facs.facid;  
+
 /* Exercicio 14 - List each member's first booking after September 1st 2012*/ 
+
+/*min pega os mais recentes*/
+SELECT mb.surname, mb.firstname, mb.memid, min(bk.starttime) as starttime
+FROM cd.bookings bk
+	INNER JOIN cd.members mb 
+	on mb.memid = bk.memid
+	WHERE starttime >= '2012-09-01'
+	GROUP BY mb.surname, mb.firstname, mb.memid
+ORDER BY mb.memid;
+
 /* Exercicio 15 - Produce a list of member names, with each row containing the total member count*/ 
+SELECT (SELECT count(*) FROM cd.members) /* count(*) over() função window é uma opcao*/
+		as count, mb.firstname,  mb.surname
+	FROM cd.members as mb
+order by mb.joindate;
+
 /* Exercicio 16 - Produce a numbered list of members*/ 
+/*cria uma row number pra cada joindate*/
+SELECT row_number() over(order by joindate), mb.firstname, mb.surname
+	FROM cd.members as mb
+ORDER BY mb.joindate
+	
 /* Exercicio 17 - Output the facility id that has the highest number of slots booked, again*/ 
+
+
 /* Exercicio 18 - Rank members by (rounded) hours used*/ 
 /* Exercicio 19 - Find the top three revenue generating facilities*/ 
 /* Exercicio 20 - Classify facilities by value*/ 
