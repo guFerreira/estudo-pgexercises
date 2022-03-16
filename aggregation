@@ -135,7 +135,6 @@ SELECT facid, total FROM (
 		GROUP BY facid
 	) as ranked
 	WHERE rank = 1 ;
-	
 /*
 Essa subquerie vai classificar do maior salário para o menor, e vai ser exibido essa
 soma dos salários
@@ -148,7 +147,31 @@ SELECT facid, sum(slots) total,
 	
 
 /* Exercicio 18 - Rank members by (rounded) hours used*/ 
+SELECT firstname, surname,
+	((sum(bk.slots)+10)/20)*10 as hours,/*arredonda o numero para os 10 mais proximos*/
+	rank() over (ORDER BY ((sum(bk.slots)+10)/20)*10 desc) as rank
+	FROM cd.bookings bk
+	INNER JOIN cd.members mb
+		on bk.memid = mb.memid
+	GROUP BY mb.memid
+ORDER BY RANK, surname, firstname;   
+
+
 /* Exercicio 19 - Find the top three revenue generating facilities*/ 
+SELECT name, rank FROM (
+	SELECT fc.name as name, rank() over (ORDER BY sum(
+	  		CASE
+				when memid = 0 then slots * fc.guestcost
+				else slots * membercost
+			end) desc) as rank
+		FROM cd.bookings bk
+		INNER JOIN cd.facilities fc
+			on bk.facid = fc.facid
+		GROUP BY fc.name
+	) as subq
+ORDER BY rank 
+LIMIT 3;
+
 /* Exercicio 20 - Classify facilities by value*/ 
 /* Exercicio 21 - Calculate the payback time for each facility*/ 
 /* Exercicio 22 - Calculate a rolling average of total revenue*/ 
