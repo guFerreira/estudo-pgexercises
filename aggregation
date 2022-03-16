@@ -97,6 +97,7 @@ ORDER BY "Total Slots" DESC limit 1; /* limita a 1 linha o resultado da consulta
 select facs.facid, facs.name,
 	trim(to_char(sum(bks.slots)/2.0, '9999999999999999D99')) as "Total Hours"
 	/*to_char vai transformar o resultado da soma dos slots em uma string com o formato de numeros*/
+	/*'9999999999999999D99' é o formato da saida, com 2 casas decimais após virgula*/
 	from cd.bookings bks
 	inner join cd.facilities facs
 		on facs.facid = bks.facid
@@ -127,7 +128,24 @@ SELECT row_number() over(order by joindate), mb.firstname, mb.surname
 ORDER BY mb.joindate
 	
 /* Exercicio 17 - Output the facility id that has the highest number of slots booked, again*/ 
-
+SELECT facid, total FROM (
+	SELECT facid, sum(slots) total, 
+  			rank() over (order by sum(slots) desc) rank
+        	FROM cd.bookings
+		GROUP BY facid
+	) as ranked
+	WHERE rank = 1 ;
+	
+/*
+Essa subquerie vai classificar do maior salário para o menor, e vai ser exibido essa
+soma dos salários
+SELECT facid, sum(slots) total, 
+  			rank() over (order by sum(slots) desc) rank
+        	FROM cd.bookings
+		GROUP BY facid
+*/
+	
+	
 
 /* Exercicio 18 - Rank members by (rounded) hours used*/ 
 /* Exercicio 19 - Find the top three revenue generating facilities*/ 
